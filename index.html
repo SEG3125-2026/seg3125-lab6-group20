@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Sephora Website UI Survey</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+        <body class="body">
+
+            <header>
+                <h1>Sephora Survey</h1>
+
+                <p id="intro">This survey will be assessing the UI of
+                    <a href="https://www.sephora.com/ca/en/">Sephora</a>
+                </p>
+
+                <a class="sephora_logo"
+                   href = "https://www.sephora.com/ca/en/" target="_blank"><img
+                        src="img_UI.png"
+                        alt="Sephora Logo"></a> 
+            </header>
+
+            <h2> Website Pages</h2>
+            <div class ="gallery">
+                <a href="#img1">
+                    <img src="img_UI.png" alt="Homepage"></a>
+                <a href="#img2">
+                    <img src="productpage.png" alt="Product Page UI"></a>
+                <a href="#img3">
+                    <img src="cartpage.png" alt="Cart Page UI"></a>
+            </div>
+
+            <div id="img1" class="lightbox">
+                <a href="#" class="close">&times;</a>
+                <img src="img_UI.png" alt="Homepage UI enlarged">
+            </div>
+
+            <div id="img2" class="lightbox">
+                <a href="#" class="close">&times;</a>
+                <img src="productpage.png" alt="Product Page UI enlarged">
+            </div>
+
+            <div id="img3" class="lightbox">
+                <a href="#" class="close">&times;</a>
+                <img src="cartpage.png" alt="Cart Page UI enlarged">
+            </div>
+            
+            <div id="questionMakeup" class="survey">
+                <p>Does the product page image provide enough visual information to help you decide what to buy?
+                </p>
+                <input type="radio" id="makeupYes" name="productVisuals" value="yes" required>
+                <label for="makeupYes">Yes</label><br>
+
+                <input type="radio" id="makeupNo" name="productVisuals" value="no">
+                <label for="makeupNo">No</label>
+            </div> <br>
+
+
+            <div id="questionCart" class="survey">
+                <label for="cartClarity">
+                Based on the cart page image, how clear is the checkout process?
+                </label><br>
+                <select id="cartClarity" name="cartClarity" required>
+                <option value="">Select an option</option>
+                <option>Very clear</option>
+                <option>Somewhat clear</option>
+                <option>Confusing</option>
+                <option>Very confusing</option>
+            </select>
+            </div> <br>
+
+            <div class="survey">
+                <form id="surveyQuestions" action="#">
+                    <div id="question1">
+                        <label for="firstNoticed">What is the first thing you noticed about this website?</label><br>
+                        <input type="text" id="firstNoticed" name="firstNoticed" class="input-field" placeholder="Enter your answer..." required><br> <!--added name and class and made it required -->
+                    </div>
+                    <div id="question2">
+                        <p>Is it easy to navigate?</p>
+                        <input type="radio" id="yes" name="navigation" value="yes">
+                        <label for="yes">Yes</label><br>
+                        <input type="radio" id="no" name="navigation" value="no">
+                        <label for="no">No</label><br>
+                    </div>
+                    <div id="question3">
+                        <label for="important">Choose the most important feature from the following list: </label>
+                        <select id="important" name="important">
+                            <option>Images</option>
+                            <option>Colours</option>
+                            <option>Banners</option>
+                            <option>Filters</option>
+                        </select>
+                    </div>
+                    <div id="question4">
+                        <p>Please select the brands you see on the main page</p>
+                        <input type="checkbox" id="rareBeauty" name="rareBeauty" value="rareBeauty">
+                        <label for="rareBeauty">Rare beauty</label><br>
+                        <input type="checkbox" id="fentyBeauty" name="fentyBeauty" value="fentyBeauty">
+                        <label for="fentyBeauty">Fenty beauty</label><br>
+                        <input type="checkbox" id="tatcha" name="tatcha" value="tatcha">
+                        <label for="tatcha">Tatcha</label><br>
+                        <input type="checkbox" id="nars" name="nars" value="nars">
+                        <label for="nars">Nars</label><br>
+                        <input type="checkbox" id="hudaBeauty" name="hudaBeauty" value="hudaBeauty">
+                        <label for="hudaBeauty">Huda Beauty</label><br>
+                    </div>
+                    <div id="question5">
+                        <p>Can you tell what type of website this is? (Gaming, Retail, Government, etc.)</p>
+                        <input type="radio" id="yes2" name="navigation2" value="yes">
+                        <label for="yes">Yes</label><br>
+                        <input type="radio" id="no2" name="navigation" value="no">
+                        <label for="no">No</label><br>
+                    </div><br>
+                    <div id="question6">
+                        <label for="demographic">Which demographic is this website catered to?</label><br>
+                        <input type="text" id="demographic" name="demographic" class="input-field" placeholder="Enter your answer..." required><br>
+                    </div><br>
+                    <div id="question7">
+                        <label for="additionalComments">Enter any additional comments below:</label><br>
+                        <textarea id="additionalComments" placeholder="Enter your answer..."></textarea><br>
+                    </div>
+                    <button type="submit" id="submitButton">Submit</button>
+                </form>
+            </div>
+            <footer id="footer">Website designed by Kayla Cameron, Yasmine Hallak, and Emily Jette</footer>
+        </body>
+</html>
