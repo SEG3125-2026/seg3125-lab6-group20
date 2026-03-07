@@ -45,7 +45,7 @@
             </div>
 
             <!-- <div class="survey"> -->
-                <form id="surveyQuestions" action="">
+                <form id="surveyQuestions" action="/submitSurvey" method="POST">
 
                     <div class="tab lead" id="question1" >
                         <p>Does the product page image provide enough visual information to help you decide what to buy?</p>
@@ -96,18 +96,18 @@
                         <p>Can you tell what type of website this is? (Gaming, Retail, Government, etc.)</p>
                         <input type="radio" id="yes2" name="navigation2" value="yes" oninput="this.className=''">
                         <label for="yes">Yes</label><br>
-                        <input type="radio" id="no2" name="navigation" value="no" oninput="this.className=''">
+                        <input type="radio" id="no2" name="navigation2" value="no" oninput="this.className=''">
                         <label for="no">No</label><br>
                     </div><br>
                     <div class="tab lead" id="question7" >
                         <label for="demographic">Which demographic is this website catered to?</label><br>
                         <input type="text" id="demographic" name="demographic" class="input-field" placeholder="e.g. Young Adults..." oninput="this.className=''" required><br>
                     </div><br>
-                    <div class="tab lead" id="question7" >
+                    <div class="tab lead" id="question8" >
                         <label for="additionalComments">Enter any additional comments below:</label><br>
-                        <textarea id="additionalComments" placeholder="We want to hear your thoughts!" oninput="this.className=''"></textarea><br>
+                        <textarea id="additionalComments" name ="additionalComments" placeholder="We want to hear your thoughts!" oninput="this.className=''"></textarea><br>
                     </div>
-                    <!-- <button class="lead btn-primary" type="submit" id="submitButton">Submit</button> -->
+                    <button class="lead btn-primary" type="submit" id="submitButton">Submit</button>
                     <div style="overflow:auto;">
                         <div style="float:right;">
                             <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
