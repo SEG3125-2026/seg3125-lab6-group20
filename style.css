@@ -8,36 +8,14 @@ html{
 }
  
 body {
-  
   background-color: rgba(217, 230, 242, 0.95) ; 
   width: 75%;
-  max-width: 1000px;
-  margin: 10px auto;
+  max-width: 1000px; 
+  margin: 10px auto; 
   padding: 20px ;
   font-family: Arial, Helvetica, sans-serif;
-  border: 3px solid black;
+  border: 3px solid black; 
 }
-
-h1 {
-	font-size: 50px;
-	text-align: center;
-	color:  #264d73;  
-}
-
-h2{
-  text-align: center;
-  margin-top:30px;
-  color:  #264d73 ; 
-}
-
-p {
-  color:  #000d19 ; 
-}
-
-#intro{
-  text-align: center; 
-}
-
 
 .sephora_logo{
   overflow:hidden;
@@ -162,4 +140,27 @@ p {
   padding: 5px;
   font-size:15px;
   color:  #000d19;
+}
+
+.tab{
+  display: none;
+}
+
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+input.invalid {
+  background-color: #ffdddd;
 }
