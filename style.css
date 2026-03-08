@@ -32,7 +32,6 @@ button:hover , #submitButton:hover{
   color: white;
 }
 
-
 input.invalid {
   background-color: #ffdddd;
 }
@@ -162,4 +161,7 @@ input.invalid {
   padding: 5px;
   font-size:15px;
   color:  #000d19;
+}
+.tab{
+  display: none;
 }
