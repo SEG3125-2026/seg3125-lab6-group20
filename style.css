@@ -162,3 +162,6 @@ input.invalid {
   font-size:15px;
   color:  #000d19;
 }
+.tab{
+  display: none;
+}
