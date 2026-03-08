@@ -5,29 +5,39 @@ var currentTab = 0;
 showTab(currentTab); 
 
 function showTab(tab) {
+  var nextButton = document.getElementById("nextBtn");
+  var prevButton = document.getElementById("prevBtn");
+  var submitButton = document.getElementById("submitButton");
   var tabList = document.getElementsByClassName("tab");
   tabList[tab].style.display = "block";
   if (tab == 0) {
-    document.getElementById("prevBtn").style.display = "none";
+    prevButton.style.display = "none";
   } else {
-    document.getElementById("prevBtn").style.display = "inline; text-align: center;";
+    prevButton.style.display = "inline";
   }
-  if (tab != (tabList.length - 1)){
-    document.getElementById("nextBtn").innerHTML = "Next";
-  } else {
-    document.getElementById("submitButton").innerHTML = "SUBMIT";
+  if (tab == (tabList.length - 1)){
+    nextButton.style.display = "none";
+    submitButton.style.display = "block";
+  } else{
+    nextButton.style.display = "inline";
+    submitButton.style.display = "none";
   }
-  // ... and run a function that displays the correct step indicator:
-  //fixStepIndicator(tab)
+  fixStepIndicator(tab)
 }
 
 function nextPrev(n) {
   var tabList = document.getElementsByClassName("tab");
   tabList[currentTab].style.display = "none";
   currentTab += n;
-  if (currentTab >= tabList.length) {
-    document.getElementById("surveyQuestions").submit();
-    return false;
-  }
   showTab(currentTab);
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, tabList = document.getElementsByClassName("step");
+  for (i = 0; i < tabList.length; i++) {
+    tabList[i].className = tabList[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class to the current step:
+  tabList[n].className += " active";
 }
