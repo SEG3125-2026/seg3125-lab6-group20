@@ -10,9 +10,29 @@
 <body>
 	<h1>Sephora Survey Results</h1>
 
-	<canvas id="chart"></canvas>
+	<canvas id="resultChart" width="500" height="250"></canvas>
 
-	<script></script>
+	<script>
+		async function loadResults(){
+			const response = await fetch("/surveyresults");
+			const data = await response.json();
+			const responses = data.responses; 
 
+			let numOfYes = 0;
+			let numOfNo = 0; 
+
+			responses.forEach(r => {
+				if(r.productVisuals === "yes"){
+					numOfYes ++;
+				}
+				if(r.productVisuals === "no"){
+					numOfNo ++;
+				}
+			}); 
+
+			new Chart(document.getElementById("resultChart"), { type:"pie",data:{labels:["Yes","No"], datasets:[{data: [numOfYes,numOfNo]}]}});
+		}
+		loadResults();
+	</script>
 </body>
 </html>
