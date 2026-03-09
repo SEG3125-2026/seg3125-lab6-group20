@@ -4,35 +4,61 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Sephora Website UI Survey Results</title>
+	<link rel="stylesheet" href="style.css">	
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- chart.js is a built in function-->
     <link rel="stylesheet" href="style.css">
+
+    <style>
+    	canvas{
+    		max-width: 700px;
+    		margin-bottom: 40px;
+    	}
+    </style>
 </head>
 <body>
 	<h1>Sephora Survey Results</h1>
+	<p>Thank you for filling out the form!</p>
+	
+	<div class="chartContainer">
+		<h3>Question 1: Product Page Infromation</h3>
+		<canvas id="productInformationChart"></canvas>
+	</div>
+	
+	<div class="chartContainer">
+		<h3>Question 2: Checkout Process Clarity</h3>
+		<canvas id="cartChart"></canvas>
+	</div>
 
-	<canvas id="resultChart" width="500" height="250"></canvas>
+	<div class="chartContainer">
+		<h3>Question 3: First Thing Noticed</h3>
+		<canvas id="noticedChart"></canvas>
+	</div>
 
-	<script>
-		async function loadResults(){
-			const response = await fetch("/surveyresults");
-			const data = await response.json();
-			const responses = data.responses; 
+	<div class="chartContainer">
+		<h3>Question 4: Easy to Navigate</h3>
+		<canvas id="navigationChart"></canvas>
+	</div>
 
-			let numOfYes = 0;
-			let numOfNo = 0; 
+	<div class="chartContainer">
+		<h3>Question 5: Brands Recognized</h3>
+		<canvas id="brandChart"></canvas>
+	</div>
 
-			responses.forEach(r => {
-				if(r.productVisuals === "yes"){
-					numOfYes ++;
-				}
-				if(r.productVisuals === "no"){
-					numOfNo ++;
-				}
-			}); 
+	<div class="chartContainer">
+		<h3>Question 6: Website Type</h3>
+		<canvas id="typeChart"></canvas>
+	</div>
 
-			new Chart(document.getElementById("resultChart"), { type:"pie",data:{labels:["Yes","No"], datasets:[{data: [numOfYes,numOfNo]}]}});
-		}
-		loadResults();
-	</script>
+	<div class="chartContainer">
+		<h3>Question 7: Target Demographic </h3>
+		<canvas id="targetChart"></canvas>
+	</div>
+
+	<div class="chartContainer">
+		<h3>Question 8: Most Important Feature</h3>
+		<canvas id="featuresChart"></canvas>
+	</div>
+	 <footer id="footer">Website designed by Emily Jette</footer>
+	 <script src="script.js"></script>
 </body>
 </html>

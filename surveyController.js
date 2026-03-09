@@ -48,7 +48,7 @@ function counts(name,value){
 
 module.exports = function(app){
 	app.get("/index", function(req,res){
-		res.sendFile(path.join(__dirname,"views","index.html"));
+		res.sendFile(path.join(__dirname,"index.html"));
 	});
 
 	app.post("/index", urlencodedParser, function(req,res){
@@ -65,45 +65,7 @@ module.exports = function(app){
 	});
 
 	app.get("analysis", function(req,res){
-		res.sendFile(path.join(__dirname,"views", "analysis.html"));
+		res.sendFile(path.join(__dirname,"analysis.html"));
 	});
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -18,21 +18,15 @@ app.get("/niceSurvey", (req, res) => {
 app.post("/submitSurvey",(req, res) => {
     const surveyData=req.body;
     console.log("Response received:",surveyData);
-    const dataDir = path.join(__dirname, "data");
     const filePath = path.join(__dirname, "surveyResults.json"); 
 
-    if (!fs.existsSync(dataDir)) {
-        fs.mkdirSync(dataDir);
-    }
-
-        // Read existing survey results, or start with empty array
     let jsonData = [];
     if (fs.existsSync(filePath)) {
         const fileContents = fs.readFileSync(filePath);
         try {
             jsonData = JSON.parse(fileContents);
         } catch (err) {
-            console.error("Error parsing surveyresults.json, starting fresh.");
+            console.error("Error parsing surveyResults.json, starting fresh.");
             jsonData = [];
         }
     }
@@ -44,19 +38,20 @@ app.post("/submitSurvey",(req, res) => {
 
 });
 
+
 app.get("/analysis", (req,res) =>{
     res.sendFile(path.join(__dirname,"analysis.html"));
 
 });
 
 app.get("/surveyresults", (req, res) => {
-    const filePath = path.join(__dirname, "data", "surveyresults.json");
+    const filePath = path.join(__dirname, "surveyResults.json");
     let surveyData = [];
     if (fs.existsSync(filePath)) {
         try {
             surveyData = JSON.parse(fs.readFileSync(filePath));
         } catch (err) {
-            console.error("Error reading surveyresults.json");
+            console.error("Error reading surveyResults.json");
             surveyData = [];
         }
     }
