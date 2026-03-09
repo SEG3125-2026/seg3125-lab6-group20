@@ -1,0 +1,29 @@
+html{
+    background-color: rgba(217, 230, 242, 0.95) ; 
+}
+
+body {
+  background-color: rgba(217, 230, 242, 0.95) ; 
+  margin: 10px auto; 
+  padding: 20px ;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+canvas{
+    max-width: 700px;
+    margin-bottom: 40px;
+} 
+
+.chart-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:40px;
+    width:90%;
+    margin:auto;
+}
+
+.chartContainer{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}

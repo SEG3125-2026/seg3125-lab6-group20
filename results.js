@@ -1,4 +1,4 @@
-fetch("data/surveyData.json")
+fetch("surveyData.json")
 .then(res => res.json())
 .then(data => {
 
