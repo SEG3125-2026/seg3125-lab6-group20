@@ -1,8 +1,7 @@
 # seg3125-lab6-group20
 
-run: node server.js 
-open: index.html 
+run: node server.js in terminal 
+open: http://localhost:3000/niceSurvey in browser
 
-on index.html: 
-answer survery questions 
+then, answer survery questions 
 
