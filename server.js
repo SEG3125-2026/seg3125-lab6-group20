@@ -1,6 +1,7 @@
 const express =require("express");
 const fs = require("fs");
-const path = require("path")
+const path = require("path");
+
 const app=express();
 const PORT=3000;
 
@@ -22,8 +23,8 @@ app.post("/submitSurvey",(req, res) => {
 
     let jsonData = [];
     if (fs.existsSync(filePath)) {
-        const fileContents = fs.readFileSync(filePath);
         try {
+            const fileContents = fs.readFileSync(filePath);
             jsonData = JSON.parse(fileContents);
         } catch (err) {
             console.error("Error parsing surveyResults.json, starting fresh.");

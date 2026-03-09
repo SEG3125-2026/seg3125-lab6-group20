@@ -27,3 +27,10 @@ canvas{
     padding:20px;
     border-radius:10px;
 }
+
+#footer{
+  text-align:right;
+  color:dark blue;
+  font-style:italic;
+  font-size: 10px ;
+}

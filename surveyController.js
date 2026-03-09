@@ -4,68 +4,54 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 var fs = require('fs'); //file system 'library'
 var path = require('path')
 
-//read file data 
-function readData(fileName){
-	const filePath = path.join(__dirname, "data", fileName + ".json"); 
-
-	if(!fs.existsSync(filePath)) {
-		//error handling
-		return []
-	};
-
-	let dataRead = fs.readFileSync(filePath);
-	let infoRead = JSON.parse(dataRead);
-
-	return infoRead;
-}
-
-//write data 
-function writeData(info, fileName){
-	const filePath = path.join(__dirname, "data", fileName +".json");
-	let data = JSON.stringify(info); 
-	fs.writeFileSync(filePath, data);
-}
-
-//update file
-function counts(name,value){
-	let info = readData(name);
-	let found = false;
-
-  	for (let i = 0; i < info.length; i++) {
-        if (info[i][name] === value) {
-            info[i].count = parseInt(info[i].count) + 1;
-            found = true;
-            break;
-        }
-    }
-
-    if(!found){
-    	info.push({ [name]: value, count: 1 });
-
-    }
-    writeData(info,name); 
-}
-
 module.exports = function(app){
-	app.get("/index", function(req,res){
+	const urlencodedParser = bodyParser.urlencoded({extended:false});
+	app.use(bodyParser.json());
+
+	app.get("/niceSurvey", (req,res) =>{
 		res.sendFile(path.join(__dirname,"index.html"));
 	});
 
-	app.post("/index", urlencodedParser, function(req,res){
-		const json = req.body;
+	app.post("/submitSurvey", urlencodedParser, (req,res) => {
+		const surveyData = req.body;
+		console.log("Response recieved:", surveyData);
 
-		for(let key in json){
-			if(Array.isArray(json[key])){
-				json[key].forEach(item => counts(key,item));
-			}else{
-				combineCounts(key,json[key]);
+		const filePath = path.join(__dirname, "surveyResults.json");
+		let jsonData = [];
+
+		if(fs.existsSync(filePath)){
+			try{
+				const fileContents = fs.readFileSync(filePath);
+				jsonData = JSON.parse(fileContents);
+			} catch(err){
+				console.error("Error readubg surveyResults.json, starting fresh.");
+				jsonData = [];
 			}
 		}
+
+		jsonData.push(surveyData);
+		fs.writeFileSync(filePath,JSON.stringify(jsonData));
+
 		res.redirect("/analysis");
+	}); 
+
+	app.get("/analysis",(req, res) => {
+		res.sendFile(path.join(__dirname, "analysis.html"));
 	});
 
-	app.get("analysis", function(req,res){
-		res.sendFile(path.join(__dirname,"analysis.html"));
-	});
-}
+	app.get("/surveyresults", (req,res) =>{
+		const filePath = path.join(__dirname,"surveyResults.json");
+		let surveyData = [];
 
+		if(fs.existsSync(filePath)){
+			try{
+				surveyData = JSON.parse(fs.readFileSync(filePath));
+			}catch(err){
+				console.error("Error reading surveyResults.json");
+				surveyData = [];
+			}
+		}
+		res.json({responses:surveyData});
+	});
+
+};

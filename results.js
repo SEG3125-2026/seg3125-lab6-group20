@@ -1,4 +1,4 @@
-fetch("surveyData.json")
+fetch("surveyResults.json")
 .then(res => res.json())
 .then(data => {
 
@@ -11,6 +11,7 @@ function countValues(arr, field){
     });
     return counts;
 }
+
 function makePie(canvasID, counts){
     new Chart(document.getElementById(canvasID),{
         type:"pie",
@@ -20,6 +21,7 @@ function makePie(canvasID, counts){
         }
     });
 }
+
 function makeBar(canvasID, counts, label){
     new Chart(document.getElementById(canvasID),{
         type:"bar",
@@ -46,7 +48,7 @@ let typeCounts = countValues(data,"navigation2");
 let demographicCounts = countValues(data,"demographic");
 let importantCounts = countValues(data,"important");
 
-let brands = {
+const brands = {
 RareBeauty:0,
 FentyBeauty:0,
 Tatcha:0,
@@ -71,4 +73,7 @@ makePie("typeChart",typeCounts);
 makeBar("targetChart",demographicCounts,"Responses");
 makeBar("featuresChart",importantCounts,"Votes");
 
+})
+.catch(err => {
+    console.error("Error fetching survey results:", err);
 });
